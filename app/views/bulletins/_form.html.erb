@@ -1,0 +1,18 @@
+<%= form_for @bulletin do |b| %>
+  <%= render 'shared/error_messages', :record => @bulletin %>
+  <div class="field">
+    <%= b.label :title %><br /><%= b.text_field :title %><br />
+  </div>
+  <div class="field">
+    <%= b.label :bulletin %><br /><%= b.text_area :bulletin, :rows => "4" %><br />
+  </div>
+  <div class="field">
+    <%= b.check_box :current %> <%= b.label :current %><br />
+  </div>
+  <div class="field">
+    <%= b.check_box :public %> <%= b.label :public %><br />
+  </div>
+  <div class="actions">
+    <%= b.submit submit_text %>
+  </div>
+<% end %>

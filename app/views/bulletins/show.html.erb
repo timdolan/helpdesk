@@ -1,0 +1,7 @@
+<h1>Bulletin</h1>
+
+<table class="bulletin">
+  <tr><td><%= @bulletin.updated_at %><span id="bulletinactions"><%= link_to "Edit", edit_bulletin_path(@bulletin.id) %></span></td></tr>
+  <tr><td><%= @bulletin.title %></td></tr>
+  <tr><td><%= @bulletin.bulletin %></td></tr>
+</table>

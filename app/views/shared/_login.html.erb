@@ -1,0 +1,11 @@
+<div class="login_form">
+<%= form_for(:session, :url => sessions_path) do |f| %>
+<table class="login">
+  <div class="field"><tr><td><%= f.label :email %></td><td><%= f.text_field :email, :size => "20" %></td></tr></div>
+  <div class="field"><tr><td><%= f.label :password %></td><td><%= f.password_field :password, :size => "20" %></td></tr></div>
+  <div class="actions"><tr><td>&nbsp;</td><td><%= f.submit "Sign in" %></td></tr></div>
+</table>
+<% end %>
+
+<p class="login">New user? <%= link_to "Sign up now!", signup_path %></p>
+</div>

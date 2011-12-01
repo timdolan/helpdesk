@@ -1,0 +1,8 @@
+<% if signed_in? %>
+  <%= render 'shared/profile' %>
+<% else %>
+  <%= render 'shared/login' %>
+<% end %>
+<br />
+
+<%= render 'shared/collection_of_bulletins' %>

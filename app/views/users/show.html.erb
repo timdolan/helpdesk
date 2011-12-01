@@ -1,0 +1,30 @@
+<h1><%= "#{@user.last_name}, #{@user.first_name} #{@user.middle_name}" %></h1>
+
+<table class="profile">
+  <tr>
+    <td>Employee ID</td>
+    <td><%= @user.employee_number %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td>Work Phone</td>
+    <td><%= @user.work_phone %></td>
+  </tr>
+  <tr>
+    <td>Cell Phone</td>
+    <td><%= @user.cell_phone %></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td><%= @user.location.name %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Edit Profile", edit_user_path(@user) %></td>
+    <td></td>
+  </tr>
+</table>
+<br />
+<%= link_to "List all users", users_path %>

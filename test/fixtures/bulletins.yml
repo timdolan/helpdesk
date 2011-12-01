@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bulletin: MyString
+  date: MyString
+  current: false
+  public: false
+  user_id: 1
+
+two:
+  bulletin: MyString
+  date: MyString
+  current: false
+  public: false
+  user_id: 1

@@ -1,0 +1,17 @@
+<h1>Users#index</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Employee ID</th>
+    <th>Email</th>
+    <th>Location</th>
+  </tr>
+<% @user.each do |u| %>
+<tr>
+  <td><%= link_to "#{u.last_name}, #{u.first_name} #{u.middle_name}", user_path(u) %></td>
+  <td><%= u.employee_number %></td>
+  <td><%= u.email %></td>
+  <td><%= u.location.name %></td>
+</tr>
+<% end %>
+</table>

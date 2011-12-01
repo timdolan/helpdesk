@@ -1,0 +1,15 @@
+<%= form_for @location do |l| %>
+  <%= render 'shared/error_messages', :record => @location %>
+  <div class="field">
+    <%= l.label :name %><br /><%= l.text_field :name %><br />
+  </div>
+  <div class="field">
+    <%= l.label :address %><br /><%= l.text_field :address %><br />
+  </div>
+  <div class="field">
+    <%= l.label :user_id %><br /><%= l.collection_select :user_id, User.where("worker = ?", true), :id, :employee_number, :include_blank => "assigned field tech" %><br />
+  </div>
+  <div class="actions">
+    <%= l.submit "Add Location" %>
+  </div>
+<% end %>

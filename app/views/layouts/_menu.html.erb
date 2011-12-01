@@ -1,0 +1,18 @@
+<div id="menu_container">
+<ul class="googleTab">  
+  <li><%= link_to_unless_current "Home", root_path do link_to "Home", root_path, :class => "active" end %></li>
+  <% if signed_in? %>
+    <li><%= link_to_unless_current "Profile", user_path(current_user) do link_to "Profile", user_path(current_user), :class => "active" end %></li>
+    <% if current_user.admin? %>
+      <li><%= link_to_unless_current "Bulletins", bulletins_path do link_to "Bulletins", bulletins_path, :class => "active" end %></li>
+      <li><%= link_to_unless_current "Locations", locations_path do link_to "Locations", locations_path, :class => "active" end %></li>
+    <% end %>
+    <% if current_user.worker? %>
+      <li><%= link_to_unless_current "Users", users_path do link_to "Users", users_path, :class => "active" end %></li>
+    <% end %>
+    <li><%= link_to_unless_current "Sign out", signout_path do link_to "Sign out", signout_path, :class => "active" end %></li>
+  <% else %>
+    <li><%=link_to_unless_current "Sign in", signin_path do link_to "Sign in", signin_path, :class => "active" end %></li>
+  <% end %>
+</ul>
+</div>

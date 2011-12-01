@@ -1,4 +1,21 @@
 Helpdesk::Application.routes.draw do
+  
+  get "articles/index"
+
+  get "knowledge_base/index"
+
+  resources :users
+  resources :locations
+  resources :bulletins
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  match '/signin', :to => "sessions#new"
+  match '/signout', :to => "sessions#destroy"
+  match '/signup', :to => "users#new"
+  match '/faq', :to => "pages#faq"
+
+  root :to => "pages#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

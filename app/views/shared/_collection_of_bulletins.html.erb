@@ -1,0 +1,11 @@
+<% @bulletin.each do |b| %>
+<table class="bulletin">
+  <tr><td><%= b.updated_at %>
+    <% if signed_in? %><% if current_user.admin? %>
+      <span id="bulletinactions"><%= link_to "Edit", edit_bulletin_path(b.id) %></span>
+    <% end %><% end %>
+  </td></tr>
+  <tr><td><%= b.title %></td></tr>
+  <tr><td><%= b.bulletin %></td></tr>
+</table>
+<% end %>

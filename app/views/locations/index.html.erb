@@ -1,0 +1,17 @@
+<h1>Locations</h1>
+<%= link_to "Add location", new_location_path %>
+<table id="locations">
+  <tr>
+    <th>Location</th>
+    <th>Address</th>
+    <th>Assigned FT</th>
+    <th>Actions</th>
+  </tr>
+  <% @location.each do |l| %>
+  <tr>
+    <td><%= l.name %></td>
+    <td><%= l.address %></td>
+    <td><%= l.user.last_name %>, <%= l.user.first_name %></td>
+    <td><%= link_to "Edit", edit_location_path(l.id) %></td></tr>
+<% end %>
+</table>
