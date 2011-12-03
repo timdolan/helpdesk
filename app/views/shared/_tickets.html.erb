@@ -1,0 +1,14 @@
+<br />
+<table class="tickets">
+  <tr>
+    <th>Title</th><th>Status</th><th>Location</th><th>Created on</th>
+  </tr>
+<% @ticket.each do |t| %>
+  <tr>
+    <td><%= link_to "View", ticket_path(t.id) %> <%= t.title %></td>
+    <td><%= t.status %></td>
+    <td><%= t.location.name %></td>
+    <td><%= localize(t.created_at, :format => :short) %></td>
+  </tr>
+<% end %>
+</table>

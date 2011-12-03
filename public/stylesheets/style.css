@@ -100,6 +100,14 @@ menu a:active {
   text-decoration: underline;
 }
 
+
+div#user_box_left {
+  float: left;
+}
+div#user_content {
+  clear: both;
+  width: 100%;
+}
 /* Profile table on show user */
 div#profile {
   background-color: #ccc;
@@ -115,6 +123,11 @@ table.profile {
   font-size: small;
   margin: 10px;
 }
+table.profile > tbody > tr > th {
+  padding: 0 0 4px 0;
+  color: blue;
+  font-weight: bold;
+}
 table.profile > tbody > tr > td {
   border: 1px solid #ccc;
   padding: 2px 2px;
@@ -126,8 +139,10 @@ table.profile > tbody > tr > td:first-child {
 table.profile > tbody > tr > td:last-child {
   background-color: white;
 }
-table.profile > tbody > tr:last-child > td:last-child {
+table.profile a {
   font-weight: bold;
+  color: blue;
+  text-decoration: none;
 }
 /* Login table */
 div.login_form {
@@ -181,6 +196,9 @@ table#locations th {
 }
 table#locations td {
   padding: 1px 5px;
+}
+table#tickets td {
+  padding: 2px 12px 2px 2px;
 }
 footer {
   clear: both;

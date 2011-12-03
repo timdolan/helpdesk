@@ -1,0 +1,23 @@
+<br />
+<table class="show_ticket">
+  <tr>
+    <td colspan="2">Title: <%= @ticket.title %></td>
+    <td>Created on: <%= localize(@ticket.created_at, :format => :short) %></td>
+  </tr>
+  <tr>
+    <td>Building: <%= @ticket.location.name %></td>
+    <td>Ticket Type: <%= @ticket.ticket_type %></td>
+    <td>Assigned To:</td>
+  </tr>
+  <tr>
+    <td>Status: <%= @ticket.status %></td>
+    <td>Type of resolution: <%= @ticket.resolution %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">Issue:<br /><%= @ticket.issue %></td>
+  </tr>
+  <tr>
+    <td colspan="3">Resolution:<br /><%= @ticket.resolution_explanation %></td>
+  </tr>
+</table>

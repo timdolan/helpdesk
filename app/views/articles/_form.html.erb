@@ -1,0 +1,17 @@
+<%= form_for @article do |a| %>
+<div class="field">
+  <%= a.label :title %><br /><%= a.text_field :title %><br />
+</div>
+<div class="field">
+  <%= a.label :article %><br /><%= a.text_area :article, :class => "mceEditor", :rows => "12", :cols => "100" %><br />
+</div>
+<div class="field">
+  <%= a.label :current %>: <%= a.check_box :current %><br />
+</div>
+<div class="field">
+  <%= a.label :public %>: <%= a.check_box :public %><br />
+</div>
+<div class="actions">
+  <%= a.submit submit_text %>
+</div>
+<% end %>

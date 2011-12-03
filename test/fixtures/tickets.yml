@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  status: MyString
+  type: MyString
+  location_id: 1
+  owner: 1
+  assigned_to: 1
+
+two:
+  title: MyString
+  status: MyString
+  type: MyString
+  location_id: 1
+  owner: 1
+  assigned_to: 1

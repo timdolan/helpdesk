@@ -1,2 +1,15 @@
 <h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<br />
+<% if signed_in_admin? %>
+  <p><%= link_to "Add Article", new_article_path %></p>
+<% end %>
+<table class="knowlegdebase">
+  <tr>
+    <th>Article</th><th>Published on</th><% if signed_in_admin? %><th>Actions</th><% end %>
+  </tr>
+  <% @article.each do |a| %>
+  <tr>
+  <td><%= link_to a.title, article_path(a.id) %></td><td><%= a.updated_at %></td><% if signed_in_admin? %><td><%= link_to "view", article_path(a.id) %> | <%= link_to "delete", a, :method => :delete, :confirm => "Are you sure?", :title => "Delete Article ##{a.id}" %></td><% end %>
+  </tr>
+  <% end %>
+</table>

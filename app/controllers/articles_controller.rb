@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  before_filter :admin_user, :except => [:index, :show]
+  
+  uses_tiny_mce
+    
   def index
     @article = Article.all
     @title = "Articles"
@@ -16,6 +20,7 @@ class ArticlesController < ApplicationController
   
   def create
     @article = Article.new(params[:article])
+    @article.user_id = current_user.id
     if @article.save
       flash[:success] = "New article added"
       redirect_to @article
@@ -32,6 +37,7 @@ class ArticlesController < ApplicationController
   
   def update
     @article = Article.find(params[:id])
+    @article.user_id = current_user.id
     if @article.update_attributes(params[:article])
       flash[:success] = "Article updated"
       redirect_to @article

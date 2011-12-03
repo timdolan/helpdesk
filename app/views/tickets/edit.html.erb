@@ -1,0 +1,18 @@
+<br />
+<h1>
+<% form_for @ticket do |t| %>
+<div class="field">
+  <%= t.label :title %><br /><%= t.text_field :title %><br />
+</div>
+<div class="field">
+  <%= t.label :location_id %><br /><%= t.collection_select :location_id, Location.all, :id, :name %>
+</div>
+<div class="field">
+  <%= t.label :issue %><br /><%= t.text_area :issue, :rows => "8", :cols => "80" %><br />
+</div>
+<div class="actions">
+  <%= t.submit "Update Ticket" %>
+</div>
+<% end %>
+
+:title, :issue, :ticket_type, :priority, :urgency, :impact, :status, :resolution, :resolution_explanation, :location_id, :contact, :assigned_to

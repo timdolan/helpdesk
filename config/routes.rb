@@ -1,13 +1,11 @@
 Helpdesk::Application.routes.draw do
   
-  get "articles/index"
-
-  get "knowledge_base/index"
-
   resources :users
   resources :locations
   resources :bulletins
+  resources :articles
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :tickets
 
   match '/signin', :to => "sessions#new"
   match '/signout', :to => "sessions#destroy"

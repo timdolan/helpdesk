@@ -6,14 +6,21 @@ class User < ActiveRecord::Base
   belongs_to :location
   has_many :locations, :foreign_key => "user_id"
   has_many :bulletins
+  has_many :articles
+  has_many :tickets, :foreign_key => "contact"
+  has_many :tickets, :foreign_key => "assigned_to"
 
   validates :last_name,             :presence => true
   validates :first_name,            :presence => true
   validates :employee_number,       :presence => true,
-                                    :length => { :is => 6 }
+                                    :length => { :is => 6 },
+                                    :uniqueness => true
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email,     :presence => true,
-                        :format => { :with => email_regex }
+  validates :email,                 :presence => true,
+                                    :format => { :with => email_regex }
+  phone_regex = /^\d{3}-\d{3}-\d{4}$/
+  validates :work_phone,            :format => { :with => phone_regex }
+  validates :cell_phone,            :format => { :with => phone_regex }
 
   validates :password,  :presence => true,
                         :confirmation => true,

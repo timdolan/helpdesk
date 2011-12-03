@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  comment: MyText
+  status: MyString
+  ticket_id: 1
+  user_id: MyString
+
+two:
+  comment: MyText
+  status: MyString
+  ticket_id: 1
+  user_id: MyString

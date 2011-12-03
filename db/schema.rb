@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128022934) do
+ActiveRecord::Schema.define(:version => 20111203164101) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -42,6 +42,32 @@ ActiveRecord::Schema.define(:version => 20111128022934) do
   end
 
   add_index "locations", ["name"], :name => "index_locations_on_name"
+
+  create_table "ticket_comments", :force => true do |t|
+    t.text     "comment"
+    t.string   "status"
+    t.integer  "ticket_id"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "title"
+    t.text     "issue"
+    t.string   "ticket_type"
+    t.string   "priority"
+    t.string   "urgency"
+    t.string   "impact"
+    t.string   "status"
+    t.string   "resolution"
+    t.text     "resolution_explanation"
+    t.integer  "location_id"
+    t.integer  "contact"
+    t.integer  "assigned_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "last_name"

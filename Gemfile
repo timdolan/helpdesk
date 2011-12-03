@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'jquery-rails'
 
+gem 'tiny_mce'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

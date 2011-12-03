@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Help Desk"
-      redirect_to @user
+      redirect_to root_path
     else
       @title = "Sign Up"
       render 'new'
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to root_path
     else
       @title = "Edit User"
       render 'edit'
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
-    redirect_to users_path 
+    redirect_to users_path
   end
 
 end
