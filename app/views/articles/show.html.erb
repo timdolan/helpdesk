@@ -1,10 +1,12 @@
 <table class="article">
-  <tbody>
+<% if signed_in_worker? %>
+  <thead>
     <tr><th>Created on: <%= @article.created_at %></th></tr>
     <tr><th>Updated on: <%= @article.updated_at %></th></tr>
     <tr><th>Submitted by: <%= @article.user.first_name %> <%= @article.user.last_name %></th></tr>
     <tr><td><%= link_to "edit", edit_article_path(@article) %></td></tr>
-  </tbody>
+  </thead>
+<% end %>
   <tbody>
     <tr><th><%= @article.title %></th></tr>
     <tr><td><%= @article.article.html_safe %></td></tr>

@@ -11,6 +11,10 @@ gem 'jquery-rails'
 
 gem 'tiny_mce'
 
+gem 'will_paginate', '~> 3.0'
+
+gem 'faker'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -7,6 +7,7 @@ Helpdesk::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :tickets
 
+  match '/articles/search', :to => "articles#search"
   match '/signin', :to => "sessions#new"
   match '/signout', :to => "sessions#destroy"
   match '/signup', :to => "users#new"

@@ -36,7 +36,7 @@ class TicketsController < ApplicationController
   def edit
     @title = "Edit Ticket"
     @ticket = Ticket.find(params[:id])
-    TICKET_TYPE = ["incident", "request for service"]
+    
   end
   
   def update

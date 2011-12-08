@@ -1,17 +1,26 @@
 <div class="user_box_left">
 <% if signed_in? %>
-  <%= render 'shared/profile' %>
+  <div class="user_box_left_content">
+    <%= link_to "Create Ticket", new_ticket_path %>
+    <br />Click to create a new<br />Service Desk ticket.
+  </div>
+  <div class="user_box_left_content">
+    <%= render 'shared/profile' %>
+  </div>
 <% else %>
-  <%= render 'shared/login' %>
+  <div class="user_box_left_content">
+    <%= render 'shared/login' %>
+  </div>
 <% end %>
 </div>
 
 <div class="user_content">
 <% if signed_in? %>
-  <%= link_to "Create Ticket", new_ticket_path %>
+  <%= render 'shared/knowledgebase_search' %>
+  <%= render 'shared/tickets' %>
+<% else %>
+  <%= render 'shared/public_content' %>
 <% end %>
-<br />
-<%= render 'shared/tickets' %>
 </div>
 <br />
 

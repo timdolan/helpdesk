@@ -1,35 +1,10 @@
-<div id="profile">
-<table class="profile">
-  <tr>
-    <th colspan="2">SPPS Helpdesk Profile</th>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td><%= current_user.last_name %>, <%= current_user.first_name %> <%= current_user.middle_name %></td>
-  </tr>
-  <tr>
-    <td>Employee ID</td>
-    <td><%= current_user.employee_number %></td>
-  </tr>
-  <tr>
-    <td>Email</td>
-    <td><%= current_user.email %></td>
-  </tr>
-  <tr>
-    <td>Work Phone</td>
-    <td><%= current_user.work_phone %></td>
-  </tr>
-  <tr>
-    <td>Cell Phone</td>
-    <td><%= current_user.cell_phone %></td>
-  </tr>
-  <tr>
-    <td>Location</td>
-    <td><%= current_user.location.name %></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><%= link_to "Edit Profile", edit_user_path(current_user) %></td>
-  </tr>
-</table>
-</div>
+<ul class="profile">
+  <li>SPPS Helpdesk Profile</li>
+  <li><span id="blue">Name:</span><br /><%= current_user.last_name %>, <%= current_user.first_name %> <%= current_user.middle_name %></li>
+  <li><span id="blue">Employee ID:</span><br /><%= current_user.employee_number %></li>
+  <li><span id="blue">Email:</span><br /><%= current_user.email %></li>
+  <li><span id="blue">Work Phone:</span><br /><%= current_user.work_phone %></li>
+  <li><span id="blue">Cell Phone:</span><br /><%= current_user.cell_phone %></li>
+  <li><span id="blue">Location:</span><br /><%= current_user.location.name %></li>
+  <li><%= link_to "[ Edit Profile ]", edit_user_path(current_user) %></li>
+</ul>

@@ -42,6 +42,7 @@ ul.googleTab li:hover	{
 body {
   padding: 0;
   margin: 0;
+  background-color: #fff;
 }
 #container {
   width: 960px;
@@ -54,7 +55,7 @@ body {
 }
 /* header styles */
 header {
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 0;
   height: 100px;
   text-align: center;
@@ -101,62 +102,58 @@ menu a:active {
 }
 
 
-div#user_box_left {
+div.user_box_left {
   float: left;
+  background-color: #ccc;
+  margin: 0 20px 20px 0;
+  width: 260px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
 }
-div#user_content {
-  clear: both;
-  width: 100%;
+div.user_box_left_content {
+  background-color: white;
+  margin: 10px 10px 20px 10px;
+  padding: 5px;
+  overflow: hidden;
+}
+div.user_box_left_content:first-child a {
+  margin: 0 auto;
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
+div.user_content {
+  float: left;
+  width: 680px;
 }
 /* Profile table on show user */
-div#profile {
-  background-color: #ccc;
-  float: left;
-  margin: 20px 20px 20px 0;
-
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-}
-table.profile {
-  border-collapse: collapse;
+ul.profile {
   font-size: small;
-  margin: 10px;
+  font-weight: bold;
 }
-table.profile > tbody > tr > th {
-  padding: 0 0 4px 0;
+ul.profile li {
+  padding: 6px 0;
+  line-height: 1.2;
+}
+ul.profile li:first-child {
   color: blue;
-  font-weight: bold;
 }
-table.profile > tbody > tr > td {
-  border: 1px solid #ccc;
-  padding: 2px 2px;
-}
-table.profile > tbody > tr > td:first-child {
-  font-weight: bold;
-  text-align: right;
-}
-table.profile > tbody > tr > td:last-child {
-  background-color: white;
-}
-table.profile a {
-  font-weight: bold;
+ul.profile span#blue {
   color: blue;
+}
+ul.profile a {
   text-decoration: none;
+  color: red;
 }
-/* Login table */
-div.login_form {
-  padding: 6px;
-  background-color: lightgrey;
-  width: 240px;
 
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+/* Login table */
+table.login tr td {
+  border: 0;
+  padding: 4px 0;
 }
-.login {
-  padding: 0;
-  margin: 0;
+table.login tr {
+  border: 0;
 }
 table.login td:first-child {
   text-align: right;
@@ -196,6 +193,9 @@ table#locations th {
 }
 table#locations td {
   padding: 1px 5px;
+}
+table.tickets {
+  width: 700px;
 }
 table#tickets td {
   padding: 2px 12px 2px 2px;

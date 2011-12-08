@@ -3,6 +3,7 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles do |t|
       t.string :title
       t.text :article
+      t.text :keyword
       t.boolean :current
       t.boolean :public
       t.integer :user_id

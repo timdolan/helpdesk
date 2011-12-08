@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   has_many :locations, :foreign_key => "user_id"
   has_many :bulletins
   has_many :articles
-  has_many :tickets, :foreign_key => "contact"
-  has_many :tickets, :foreign_key => "assigned_to"
+  has_many :tickets
 
   validates :last_name,             :presence => true
   validates :first_name,            :presence => true
@@ -42,6 +41,10 @@ class User < ActiveRecord::Base
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
+  end
+  
+  def full_name
+    return "#{first_name} #{last_name}"
   end
 
   private

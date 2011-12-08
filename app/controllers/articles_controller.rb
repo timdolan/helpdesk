@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :admin_user, :except => [:index, :show]
+  before_filter :admin_user, :except => [:index, :show, :search]
   
   uses_tiny_mce
     
@@ -52,4 +52,10 @@ class ArticlesController < ApplicationController
     flash[:success] = "Article deleted."
     redirect_to articles_path 
   end
+    
+  def search
+    @article = Article.search(params[:article][:search])
+    render 'index'
+  end
+  
 end

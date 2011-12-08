@@ -18,6 +18,10 @@ def signed_in_admin?
   signed_in? and current_user.admin?
 end
 
+def signed_in_worker?
+  signed_in? and current_user.worker?
+end
+
 def current_user=(user)
   @current_user = user
 end
