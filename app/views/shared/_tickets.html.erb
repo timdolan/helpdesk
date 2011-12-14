@@ -1,13 +1,26 @@
+<h1><%= @ticket_title %></h1>
+
+<% if current_user.worker? %>
+<div id="showmyticketslinks">
+  <%= link_to "My Tickets", :controller => "pages", :action => "index", :id => "showmytickets", :class => "active" %>
+  <%= link_to "Assigned Tickets", :controller => "pages", :action => "worker", :remote => true, :id => "showmyworkertickets" %>
+  <%= link_to "Open Assigned Tickets", :controller => "pages", :action => "open_worker", :remote => "true", :id => "showmyopenworkertickets" %>
+</div>
+<% end %>
+
+<div id="ticketcount">[ <%= pluralize(@ticket.count, "ticket") %> ]</div>
+
 <table class="tickets">
   <tr>
     <th>Title</th><th>Status</th><th>Location</th><th>Created on</th>
   </tr>
 <% @ticket.each do |t| %>
   <tr>
-    <td><%= link_to "View", ticket_path(t.id) %> <%= t.title %></td>
+    <td><%= link_to image_tag('icons/magnifier.png', :alt => "View Ticket", :title => "View Ticket") + "  " + t.title, ticket_path(t.id) %></td>
     <td><%= t.status %></td>
     <td><%= t.location.name %></td>
-    <td><%= localize(t.created_at, :format => :short) %></td>
+    <td><%= t.created_at.strftime("%b. %d, %Y") %></td>
   </tr>
 <% end %>
 </table>
+<%= will_paginate @ticket %>

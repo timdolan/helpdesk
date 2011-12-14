@@ -85,4 +85,4 @@ DEPENDENCIES
   rails (= 3.0.10)
   sqlite3
   tiny_mce
-  will_paginate (~> 3.0)
+  will_paginate

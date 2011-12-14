@@ -1,16 +1,21 @@
 Helpdesk::Application.routes.draw do
   
-  resources :users
-  resources :locations
-  resources :bulletins
-  resources :articles
-  resources :sessions, :only => [:new, :create, :destroy]
-  resources :tickets
+  get "ticket_comments/index"
 
-  match '/articles/search', :to => "articles#search"
+  resources :users, :locations, :bulletins
+  resources :tickets do
+    resources :comments
+  end
+  resources :articles do
+    get 'search', :on => :collection
+  end
+  resources :sessions, :only => [:new, :create, :destroy]
+
   match '/signin', :to => "sessions#new"
   match '/signout', :to => "sessions#destroy"
   match '/signup', :to => "users#new"
+  match '/open_worker', :to => "pages#open_worker"
+  match '/worker', :to => "pages#worker"
   match '/faq', :to => "pages#faq"
 
   root :to => "pages#index"

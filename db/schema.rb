@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(:version => 20111203164101) do
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "article"
-    t.boolean  "current"
-    t.boolean  "public"
+    t.text     "keyword"
+    t.boolean  "current",    :default => false
+    t.boolean  "public",     :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,6 +34,15 @@ ActiveRecord::Schema.define(:version => 20111203164101) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.string   "status"
+    t.integer  "ticket_id"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -42,15 +52,6 @@ ActiveRecord::Schema.define(:version => 20111203164101) do
   end
 
   add_index "locations", ["name"], :name => "index_locations_on_name"
-
-  create_table "ticket_comments", :force => true do |t|
-    t.text     "comment"
-    t.string   "status"
-    t.integer  "ticket_id"
-    t.string   "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "tickets", :force => true do |t|
     t.string   "title"

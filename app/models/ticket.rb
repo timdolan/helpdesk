@@ -5,6 +5,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user, :foreign_key => "contact"
   belongs_to :assigned_to_user, :foreign_key => "assigned_to", :class_name => "User"
   belongs_to :location
+  has_many :comments
 
   default_scope :order => 'tickets.created_at DESC'
 
@@ -15,7 +16,8 @@ class Ticket < ActiveRecord::Base
   STATUS = ["open", "re-open", "on hold", "in progress", "resolved", "closed"]
   RESOLUTION = ["none", "completed successfully", "no fault found", "see comments"]
 
-  validates :title,             :presence => true
+  validates :title,             :presence => true, 
+                                :length => { :within => 1..254 }
   validates :issue,             :presence => true
   validates :ticket_type,       :presence => true,
                                 :inclusion => { :in => TICKET_TYPE }
@@ -27,17 +29,16 @@ class Ticket < ActiveRecord::Base
                                 :inclusion => { :in => IMPACT }
   validates :status,            :presence => true,
                                 :inclusion => { :in => STATUS }
-
-
+  validates :location_id,       :presence => true
+  
 
   def set_default_values
-    self.contact = current_user unless !self.contact.nil?
-    self.ticket_type = "request for service" unless !self.ticket_type.nil?
-    self.priority = "medium" unless !self.priority.nil?
-    self.urgency = "medium" unless !self.urgency.nil?
-    self.impact = "medium" unless !self.impact.nil?
-    self.status = "open" unless !self.status.nil?
-    self.assigned_to = "1" unless !self.assigned_to.nil?
+    ticket_type = "request for service" if ticket_type.nil? or ticket_type == ""
+    priority = "medium" if priority.nil? or priority == ""
+    urgency = "medium" if urgency.nil? or urgency == ""
+    impact = "medium" if impact.nil? or impact == ""
+    status = "open" if status.nil? or status == ""
+    assigned_to = "1" if assigned_to.nil? or assigned_to == ""
   end
 
 end

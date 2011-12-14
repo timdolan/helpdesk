@@ -1,9 +1,16 @@
-<h1>Articles#index</h1>
+<h1>Knowledge Base</h1>
 <br />
 <% if signed_in_admin? %>
   <p><%= link_to "Add Article", new_article_path %></p>
 <% end %>
 <table class="knowlegdebase">
+  <tr>
+  <% if signed_in_admin? %>
+    <td colspan="3"><%= pluralize(@article.count, 'Article') %><span id="right"><%= will_paginate @article %></span</td>
+  <% else %>
+    <td colspan="2"><%= pluralize(@article.count, 'Article') %><span id="right"><%= will_paginate @article %></span></td>
+  <% end %>
+  </tr>
   <tr>
     <th>Article</th><th>Published on</th><% if signed_in_admin? %><th>Actions</th><% end %>
   </tr>
@@ -12,4 +19,11 @@
   <td><%= link_to a.title, article_path(a.id) %></td><td><%= a.updated_at %></td><% if signed_in_admin? %><td><%= link_to "view", article_path(a.id) %> | <%= link_to "delete", a, :method => :delete, :confirm => "Are you sure?", :title => "Delete Article ##{a.id}" %></td><% end %>
   </tr>
   <% end %>
+    <tr>
+  <% if signed_in_admin? %>
+    <td colspan="3"><%= will_paginate @article %></td>
+  <% else %>
+    <td colspan="2"><%= will_paginate @article %></td>
+  <% end %>
+  </tr>
 </table>

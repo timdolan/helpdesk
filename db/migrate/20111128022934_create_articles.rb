@@ -4,8 +4,8 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :article
       t.text :keyword
-      t.boolean :current
-      t.boolean :public
+      t.boolean :current, :default => false
+      t.boolean :public, :default => false
       t.integer :user_id
 
       t.timestamps

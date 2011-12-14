@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   uses_tiny_mce
     
   def index
-    @article = Article.all
+    @article = Article.paginate(:page => params[:page])
     @title = "Articles"
   end
 
@@ -54,8 +54,13 @@ class ArticlesController < ApplicationController
   end
     
   def search
-    @article = Article.search(params[:article][:search])
+    @article = Article.where("keyword LIKE ?", search_articles).paginate(:page => params[:page])
     render 'index'
   end
   
+  private
+  
+    def search_articles
+      search_condition = "%" + params[:article][:search] + "%" if !params[:article][:search].nil?
+    end
 end

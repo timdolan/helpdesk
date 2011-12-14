@@ -1,5 +1,9 @@
 class TicketsController < ApplicationController
 
+  before_filter :authenticate, :only => [:show, :new, :create]
+  before_filter :worker_user, :only => [:edit, :update]
+  before_filter :admin_user, :only => :destroy
+
   def index
     @ticket = Ticket.all
     @title = "Tickets"
@@ -8,6 +12,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @title = @ticket.title
+    @comment = Comment.new
   end
   
   def new
@@ -17,13 +22,17 @@ class TicketsController < ApplicationController
   
   def create
     @ticket = Ticket.new(params[:ticket])
-    @ticket.contact = current_user unless !@ticket.contact.nil?
-    @ticket.ticket_type = "request for service" unless !@ticket.ticket_type.nil?
-    @ticket.priority = "medium" unless !@ticket.priority.nil?
-    @ticket.urgency = "medium" unless !@ticket.urgency.nil?
-    @ticket.impact = "medium" unless !@ticket.impact.nil?
-    @ticket.status = "open" unless !@ticket.status.nil?
-    @ticket.assigned_to = "1" unless !@ticket.assigned_to.nil?
+    @user = User.find(current_user.id)
+    @location = Location.find(@user.location_id)
+    
+    @ticket.contact = current_user.id unless !@ticket.contact.nil?
+    @ticket.ticket_type = "request for service" if @ticket.ticket_type.nil? or @ticket.ticket_type == ""
+    @ticket.priority = "medium" if @ticket.priority.nil? or @ticket.priority == ""
+    @ticket.urgency = "medium" if @ticket.urgency.nil? or @ticket.urgency == ""
+    @ticket.impact = "medium" if @ticket.impact.nil? or @ticket.impact == ""
+    @ticket.status = "open" if @ticket.status.nil? or @ticket.status == ""
+    @ticket.assigned_to = @location.user_id if @ticket.assigned_to.nil? or @ticket.assigned_to == ""
+    
     if @ticket.save
       flash[:success] = "New ticket created"
       redirect_to root_path
@@ -36,7 +45,6 @@ class TicketsController < ApplicationController
   def edit
     @title = "Edit Ticket"
     @ticket = Ticket.find(params[:id])
-    
   end
   
   def update
@@ -54,9 +62,5 @@ class TicketsController < ApplicationController
     Ticket.find(params[:id]).destroy
     flash[:success] = "Ticket deleted."
     redirect_to root_path 
-  end
-
-  def userTickets
-    @ticket = Ticket.where("contact = ?", current_user)
   end
 end

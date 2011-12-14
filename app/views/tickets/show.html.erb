@@ -1,13 +1,20 @@
 <br />
 <table class="show_ticket">
   <tr>
+    <td><% if signed_in_worker? %>
+          <%= link_to "Edit ticket", edit_ticket_path(@ticket.id) %>
+        <% end %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
     <td colspan="2">Title: <%= @ticket.title %></td>
     <td>Created on: <%= localize(@ticket.created_at, :format => :short) %></td>
   </tr>
   <tr>
     <td>Building: <%= @ticket.location.name %></td>
     <td>Ticket Type: <%= @ticket.ticket_type %></td>
-    <td>Assigned To:</td>
+    <td>Assigned To: <%= "#{@ticket.assigned_to_user.first_name} #{@ticket.assigned_to_user.last_name}" unless @ticket.assigned_to.nil? %></td>
   </tr>
   <% if signed_in_worker? %>
   <tr>
@@ -15,6 +22,7 @@
     <td>Urgency: <%= @ticket.urgency %></td>
     <td>Impact: <%= @ticket.impact %></td>
   <% end %>
+  
   <tr>
     <td>Status: <%= @ticket.status %></td>
     <td><% if !@ticket.resolution.nil? %><%= @ticket.resolution %><% end %></td>
@@ -23,12 +31,32 @@
   <tr>
     <td colspan="3">Issue:<br /><%= @ticket.issue %></td>
   </tr>
+  <tr>
+    <td colspan="3"><%= link_to "Add comment", ticket_path(@ticket), :remote => true, :id => "showcommentform"  %></td>
+  </tr>
+  <tr id="ticketcommentform">
+    <td colspan="3"><%= render 'shared/comment_form' %></td>
+  </tr>
+
+  <% if !@ticket.comments.empty? %>
+    <tr id="showTicketComments"><td colspan="3"><%= pluralize(@ticket.comments.count, "comment") %> | <%= link_to "View Comments", ticket_path(@ticket), :remote => true, :id =>  "showticketcommentslink" %><%= link_to "Hide Comments", ticket_path(@ticket), :remote => true, :id =>  "hideticketcommentslink" %></td></tr>
+  <% end %>
+
+  <tr id="ticketcomments">
+    <% if @ticket.comments.empty? %>
+      <td colspan="3"><p>There are currently no tickets to view.</p></td>
+    <% else %>
+      <td colspan="3">
+        <% @ticket.comments.each do |c| %>
+          <div id="ticketcomment"><h1><%= c.created_at %></h1><p><%= c.body %></p></div>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+
   <% if !@ticket.resolution_explanation.nil? %>
   <tr>
     <td colspan="3">Resolution:<br /><%= @ticket.resolution_explanation %></td>
   </tr>
   <% end %>
 </table>
-<% if signed_in_worker? %>
-  <%= link_to "Edit ticket", edit_ticket_path(@ticket.id) %>
-<% end %>

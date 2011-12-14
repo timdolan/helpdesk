@@ -1,14 +1,39 @@
 <% form_for @ticket do |t| %>
-<div class="field">
-  <%= t.label :title %><br /><%= t.text_field :title %><br />
-</div>
-<div class="field">
-  <%= t.label :location_id %><br /><%= t.collection_select :location_id, Location.all, :id, :name %>
-</div>
-<div class="field">
-  <%= t.label :issue %><br /><%= t.text_area :issue, :rows => "8", :cols => "80" %><br />
-</div>
-<div class="actions">
-  <%= t.submit submit_text %>
-</div>
+<%= render :partial => 'shared/error_messages', :locals => { :record => @ticket }%>
+<table>
+  <tr>
+    <td colspan="3"><%= t.label :title %> <%= t.text_field :title, :size => "100" %></td>
+  </tr>
+  <tr>
+    <td><%= t.label :location_id %> <%= t.collection_select :location_id, Location.all, :id, :name, {:selected => current_user.location_id, :include_blank => "location"} %></td>
+    <td><% if current_user.worker? %>
+      <%= t.label :assigned_to %> <%= t.collection_select :assigned_to, User.where("worker = ?", true), :id, :full_name, { :selected => t.assigned_to, :include_blank => "assigned to" } %>
+        <% else %>
+            Assigned to: <%= @location.users.last_name %>
+        <% end %>
+    </td>
+    <td><% if current_user.worker? %>
+            <%= t.label :ticket_type %> <%= t.select :ticket_type, Ticket::TICKET_TYPE, :include_blank => "ticket type" %>
+        <% else %>
+            &nbsp;
+        <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t.label :priority %> <%= t.select :priority, Ticket::PRIORITY, :include_blank => "priority" %></td>
+    <td><%= t.label :urgency %> <%= t.select :urgency, Ticket::URGENCY, :include_blank => "urgency" %></td>
+    <td><%= t.label :impact %> <%= t.select :impact, Ticket::IMPACT, :include_blank => "impact" %><br />
+  </tr>
+  <tr>
+    <td><%= t.label :status %> <%= t.select :status, Ticket::STATUS, :include_blank => "status" %></td>
+    <td><%= t.label :resolution %> <%= t.select :resolution, Ticket::RESOLUTION, :include_blank => "resolution" %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3"><%= t.label :issue %><br /><%= t.text_area :issue, :rows => "8", :cols => "80" %></gd>
+  </tr>
+  <tr>
+    <td><%= t.submit submit_text %></td>
+  </tr>
+</table>
 <% end %>

@@ -1,0 +1,13 @@
+<%= form_for([@ticket, @ticket.comments.build]) do |t| %>
+  <div class="field">
+    <%= t.text_field :content %>
+  </div>
+  <% if current_user.worker? %>
+  <div class="field">
+    <%= t.label :status %> <%= t.select :status, Ticket::STATUS %><br />
+  </div>
+  <% end %>
+  <div class="actions">
+    <%= t.submit %>
+  </div>
+<% end %>

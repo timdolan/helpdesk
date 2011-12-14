@@ -24,4 +24,7 @@
 </div>
 <br />
 
+<% if !@bulletin.nil? %>
+<h2>Important Bulletins</h2>
 <%= render 'shared/collection_of_bulletins' %>
+<% end %>

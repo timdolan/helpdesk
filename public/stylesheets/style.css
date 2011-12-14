@@ -13,10 +13,12 @@ del 					{text-decoration: line-through;}
 /* tables still need 'cellspacing="0"' in the markup */
 table 					{border-collapse: collapse;	border-spacing: 0;}
 
-body					{font-family:Arial, Helvetica, sans-serif;}
+body  {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+}
 
-ul.googleTab				{
-	
+ul.googleTab  {
 	background: #000;
 	padding:0 5px;
 	font-size:13px;
@@ -35,15 +37,6 @@ ul.googleTab li:hover	{
 	background:#e4ebf8;
 	cursor:pointer;
 }
-
-
-
-
-body {
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
-}
 #container {
   width: 960px;
   margin: 0 auto;
@@ -53,25 +46,40 @@ body {
   width: 960px;
   margin: 0 auto;
 }
+h1 {
+  padding: 10px 0;
+  color: blue;
+}
 /* header styles */
 header {
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
   padding: 0;
   height: 100px;
+  width: 960px;
+}
+table#header {
+  border: none;
+  width: 100%;
+}
+table#header tr, td {
+  border: none;
+}
+table#header tr > td:first-child {
+  width: 260px;
   text-align: center;
+  vertical-align: middle;
 }
-header > img {
-  margin: 0 auto;
-}
-
 .flash {
-  clear: both;
+  display: block;
 }
 .error {
   color: red;
 }
 .success {
   color: green;
+}
+#right {
+  float: right;
 }
 menu {
   background: #000;
@@ -100,8 +108,6 @@ menu a:active {
   color: red;
   text-decoration: underline;
 }
-
-
 div.user_box_left {
   float: left;
   background-color: #ccc;
@@ -183,7 +189,7 @@ table.bulletin > tbody > tr:nth-child(2) {
   background-color: lightgreen;
   font-weight: bold;
 }
-table#locations th, tr, td {
+table#locations th, table#locations tr, table#locations td {
   border-collapse: collapse;
   border: 1px solid lightgrey;
 }
@@ -194,26 +200,110 @@ table#locations th {
 table#locations td {
   padding: 1px 5px;
 }
-table.tickets {
-  width: 700px;
+#ticketcount {
+  float: right;
+  font-size: small;
+  font-weight: bold;
+  padding: 2px 0;
 }
-table#tickets td {
-  padding: 2px 12px 2px 2px;
+#showmyticketslinks a {
+  display: block;
+  float: left;
+  padding: 2px 40px 2px 0;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+#showmyticketslinks a:hover {
+  color: blue;
+}
+.active {
+  color: blue;
+}
+table.tickets {
+  table-layout: fixed;
+  width: 100%;
+}
+table.tickets td {
+  padding: 6px 12px 6px 4px;
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  font-size: small;
+  overflow: hidden;
+  white-space: nowrap
+}
+table.tickets tr:first-child {
+  background-color: black;
+  color: white;
+}
+table.tickets th:first-child {
+  width: 300px;
+}
+table.tickets th:nth-child(2) {
+  width: 80px;
+}
+table.tickets th:nth-child(3) {
+  width: 200px;
+}
+table.tickets th:last-child {
+  width: 100px;
+}
+table.tickets tr {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+table.tickets tr:nth-child(even) {
+  background-color: #eee;
+}
+table.tickets a {
+  text-decoration: none;
+  color: black;
+}
+table.show_ticket {
+  table-layout: fixed;
+  width: 100%;
+}
+table.show_tickets td {
+  margin:5px 0;
+}
+tr#ticketcommentform {
+  height: 100%;
+  display: none;
+}
+#ticketcomments, #hideticketcommentslink {
+  display: none;
+}
+div#ticketcomment {
+  display: block;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 4px solid grey;
+}
+div#ticketcomment h1 {
+  font-size: small;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+div#ticketcomment p {
+  padding: 2px 0 20px 10px;
 }
 footer {
-  clear: both;
-  margin: 10px -20px -20px -20px;
+  display: relative;
+  height: auto;
+}
+#footer {
+  display: block;
+  border-top: 1px solid #000;
+  margin: 0;
   text-align: center;
   font-size: small;
   font-weight: bold;
-  background: #ccc;
-  padding: 5px;
-
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  background-color: #bbb;
+  height: 120px;
+  width: 100%;
 }
-footer > p {
-  padding: 0;
+#footer > p {
+  padding: 10px 0;
   margin: 0;
 }
