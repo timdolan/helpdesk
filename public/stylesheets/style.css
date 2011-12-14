@@ -287,9 +287,23 @@ table.tickets a {
   text-decoration: none;
   color: black;
 }
-table.show_ticket {
+div#ticket_table_bg {
+  background-color: lightgrey;
+  padding: 10px;
+
+  -moz-border-radius: 0 30px;
+  border-radius: 0 30px;
+}
+table.show_ticket, table.edit_ticket {
   table-layout: fixed;
   width: 100%;
+}
+table.show_ticket td, table.edit_ticket td {
+  padding: 6px;
+}
+.ticket_heading {
+  font-weight: bold;
+  color: blue;
 }
 table.show_tickets td {
   margin:5px 0;

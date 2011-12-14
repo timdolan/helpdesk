@@ -11,7 +11,7 @@ Helpdesk::Application.routes.draw do
   end
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/signin', :to => "sessions#new"
+  match '/signin', :to => "pages#index"
   match '/signout', :to => "sessions#destroy"
   match '/signup', :to => "users#new"
   match '/open_worker', :to => "pages#open_worker"

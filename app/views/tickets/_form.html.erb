@@ -1,6 +1,7 @@
 <% form_for @ticket do |t| %>
 <%= render :partial => 'shared/error_messages', :locals => { :record => @ticket }%>
-<table>
+<div id="ticket_table_bg">
+<table class="edit_ticket">
   <tr>
     <td colspan="3"><%= t.label :title %> <%= t.text_field :title, :size => "100" %></td>
   </tr>
@@ -23,7 +24,7 @@
   <tr>
     <td><%= t.label :priority %> <%= t.select :priority, Ticket::PRIORITY, :include_blank => "priority" %></td>
     <td><%= t.label :urgency %> <%= t.select :urgency, Ticket::URGENCY, :include_blank => "urgency" %></td>
-    <td><%= t.label :impact %> <%= t.select :impact, Ticket::IMPACT, :include_blank => "impact" %><br />
+    <td><%= t.label :impact %> <%= t.select :impact, Ticket::IMPACT, :include_blank => "impact" %></td>
   </tr>
   <tr>
     <td><%= t.label :status %> <%= t.select :status, Ticket::STATUS, :include_blank => "status" %></td>
@@ -32,10 +33,16 @@
   </tr>
   <% end %>
   <tr>
-    <td colspan="3"><%= t.label :issue %><br /><%= t.text_area :issue, :rows => "8", :cols => "80" %></gd>
+    <td colspan="3"><%= t.label :issue %><br /><%= t.text_area :issue, :rows => "8", :cols => "80" %></td>
   </tr>
+  <% if current_user.worker? %>
+  <tr>
+    <td colspan="3"><%= t.label :resolution_explanation %><br /><%= t.text_area :resolution_explanation, :rows => "8", :cols => "80" %>
+  </tr>
+  <% end %>
   <tr>
     <td><%= t.submit submit_text %></td><td><%= link_to "Cancel", root_path %></td><td>&nbsp;</td>
   </tr>
 </table>
+</div>
 <% end %>

@@ -1,38 +1,39 @@
 <br />
+<div id="ticket_table_bg">
 <table class="show_ticket">
   <tr>
     <td><% if signed_in_worker? %>
-          <%= link_to "Edit ticket", edit_ticket_path(@ticket.id) %>
+          <%= link_to image_tag('icons/pencil.png')+" Edit ticket", edit_ticket_path(@ticket.id) %>
         <% end %>
     </td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td colspan="2">Title: <%= @ticket.title %></td>
-    <td>Created on: <%= localize(@ticket.created_at, :format => :short) %></td>
+    <td colspan="2"><span class="ticket_heading">Title:</span> <%= @ticket.title %></td>
+    <td><span class="ticket_heading">Created on:</span> <%= localize(@ticket.created_at, :format => :short) %></td>
   </tr>
   <tr>
-    <td>Building: <%= @ticket.location.name %></td>
-    <td>Ticket Type: <%= @ticket.ticket_type %></td>
-    <td>Assigned To: <%= "#{@ticket.assigned_to_user.first_name} #{@ticket.assigned_to_user.last_name}" unless @ticket.assigned_to.nil? %></td>
+    <td><span class="ticket_heading">Building:</span> <%= @ticket.location.name %></td>
+    <td><span class="ticket_heading">Ticket Type:</span> <%= @ticket.ticket_type %></td>
+    <td><span class="ticket_heading">Assigned To:</span> <%= "#{@ticket.assigned_to_user.first_name} #{@ticket.assigned_to_user.last_name}" unless @ticket.assigned_to.nil? %></td>
   </tr>
   <% if signed_in_worker? %>
   <tr>
-    <td>Priority: <%= @ticket.priority %></td>
-    <td>Urgency: <%= @ticket.urgency %></td>
-    <td>Impact: <%= @ticket.impact %></td>
+    <td><span class="ticket_heading">Priority:</span> <%= @ticket.priority %></td>
+    <td><span class="ticket_heading">Urgency:</span> <%= @ticket.urgency %></td>
+    <td><span class="ticket_heading">Impact:</span> <%= @ticket.impact %></td>
   <% end %>
   
   <tr>
-    <td>Status: <%= @ticket.status %></td>
+    <td><span class="ticket_heading">Status:</span> <%= @ticket.status %></td>
     <td><% if !@ticket.resolution.nil? %><%= @ticket.resolution %><% end %></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td colspan="3">Issue:<br /><%= @ticket.issue %></td>
+    <td colspan="3"><span class="ticket_heading">Issue:</span><br /><%= @ticket.issue %></td>
   </tr>
   <tr>
-    <td colspan="3"><%= link_to "Add comment", ticket_path(@ticket), :remote => true, :id => "showcommentform"  %></td>
+    <td colspan="3"><%= link_to image_tag('icons/add.png')+" Add comment", ticket_path(@ticket), :remote => true, :id => "showcommentform"  %></td>
   </tr>
   <tr id="ticketcommentform">
     <td colspan="3"><%= render 'shared/comment_form' %></td>
@@ -56,7 +57,8 @@
 
   <% if !@ticket.resolution_explanation.nil? %>
   <tr>
-    <td colspan="3">Resolution:<br /><%= @ticket.resolution_explanation %></td>
+    <td colspan="3"><span class="ticket_heading">Resolution:</span><br /><%= @ticket.resolution_explanation %></td>
   </tr>
   <% end %>
 </table>
+</div>
