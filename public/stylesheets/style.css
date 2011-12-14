@@ -164,6 +164,26 @@ table.login tr {
 table.login td:first-child {
   text-align: right;
 }
+table.users {
+  width: 100%;
+}
+table.users tr {
+  border: 1px solid lightgrey;
+}
+table.users th {
+  background-color: black;
+  color: white;
+  padding: 2px;
+}
+table.users td {
+  padding: 2px 6px;
+}
+table.users tr:nth-child(odd) {
+  background-color: lightgrey;
+}
+table.user td {
+  padding: 2px 10px;
+}
 
 table.bulletin {
   clear: both;
@@ -171,8 +191,8 @@ table.bulletin {
   width: 100%;
   margin-bottom: 5px;
 }
-table.bulletin > tbody > tr > td {
-  padding: 0 10px;
+table.bulletin td {
+  padding: 2px 10px;
 }
 table.bulletin > tbody > tr:first-child {
   background-color: navy;
@@ -185,20 +205,28 @@ table.bulletin > tbody > tr:first-child {
 #bulletinactions > a {
   color: white;
 }
-table.bulletin > tbody > tr:nth-child(2) {
+table.bulletin tr:nth-child(2) {
   background-color: lightgreen;
   font-weight: bold;
 }
-table#locations th, table#locations tr, table#locations td {
-  border-collapse: collapse;
-  border: 1px solid lightgrey;
+table.locations {
+  width: 100%;
 }
-table#locations th {
-  background-color: yellow;
+table.locations th {
+  background-color: black;
+  color: white;
   padding: 1px 10px;
 }
-table#locations td {
+table.locations td {
   padding: 1px 5px;
+  border: 1px solid lightgrey;
+}
+table.locations tr:nth-child(even) {
+  background-color: lightgrey;
+}
+table.locations td:last-child {
+  width: 80px;
+  text-align: center;
 }
 #ticketcount {
   float: right;
@@ -287,6 +315,27 @@ div#ticketcomment h1 {
 }
 div#ticketcomment p {
   padding: 2px 0 20px 10px;
+}
+table.knowledgebase tr:nth-child(2) {
+  background-color: black;
+  color: white;
+}
+table.knowledgebase th {
+  padding: 2px;
+}
+table.knowledgebase td:nth-child(2) {
+  width: 120px;
+  text-align: center;
+}
+table.knowledgebase td:nth-child(3) {
+  width: 80px;
+  text-align: center;
+}
+tr.articles:nth-child(even) {
+  background-color: lightgrey;
+}
+tr.articles td {
+  padding: 2px;
 }
 footer {
   display: relative;

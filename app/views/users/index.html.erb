@@ -1,10 +1,11 @@
 <h1>Users</h1>
-<table>
+<table class="users">
   <tr>
     <th>Name</th>
     <th>Employee ID</th>
     <th>Email</th>
     <th>Location</th>
+    <th>Worker</th>
     <th>Actions</th>
   </tr>
 <% @user.each do |u| %>
@@ -13,7 +14,8 @@
   <td><%= u.employee_number %></td>
   <td><%= u.email %></td>
   <td><%= u.location.name %></td>
-  <td><%= link_to image_tag('icons/magnifier.png', :alt => "View User", :title => "View User"), user_path(u) %> <%= link_to image_tag('icons/pencil.png', :alt => "Edit User", :title => "Edit User"), edit_user_path(u) %> <%= link_to image_tag('icons/delete.png', :alt => "Delete User", :title => "Delete User"), u, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{u.first_name} #{u.last_name}" %></td>
+  <td><%= u.worker %></td>
+  <td><%= link_to image_tag('icons/magnifier.png', :alt => "View User", :title => "View User"), user_path(u), :id => "show_user_window" %> <%= link_to image_tag('icons/pencil.png', :alt => "Edit User", :title => "Edit User"), edit_user_path(u) %> <%= link_to image_tag('icons/delete.png', :alt => "Delete User", :title => "Delete User"), u, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{u.first_name} #{u.last_name}" %></td>
 </tr>
 <% end %>
 </table>

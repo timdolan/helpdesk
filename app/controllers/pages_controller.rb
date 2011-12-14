@@ -22,7 +22,4 @@ class PagesController < ApplicationController
     render 'index'
   end
   
-  def faq
-    @title = "FAQ"
-  end
 end

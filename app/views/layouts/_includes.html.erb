@@ -4,18 +4,6 @@
 <%= include_tiny_mce_if_needed %>
 <%= csrf_meta_tag %>
 <script type="text/javascript">
-$(function(){
-    positionFooter(); 
-    function positionFooter(){
-        if($(document.body).height() < $(window).height()){
-            $("#footer").css({position: "absolute",top:($(window).scrollTop()+$(window).height()-$("#footer").height())+"px"})
-        }   
-    }
-    $(window)
-            .scroll(positionFooter)
-            .resize(positionFooter)
-
-});
 
 $(document).ready(function () {
     $("#showcommentform").click(function() {
@@ -36,4 +24,5 @@ $(document).ready(function () {
         positionFooter();
     });
 });
+
 </script>

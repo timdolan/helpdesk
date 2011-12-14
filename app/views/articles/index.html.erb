@@ -1,9 +1,9 @@
 <h1>Knowledge Base</h1>
 <br />
 <% if signed_in_admin? %>
-  <p><%= link_to "Add Article", new_article_path %></p>
+  <p><%= link_to image_tag('icons/add.png')+" Add Article", new_article_path %></p>
 <% end %>
-<table class="knowlegdebase">
+<table class="knowledgebase">
   <tr>
   <% if signed_in_admin? %>
     <td colspan="3"><%= pluralize(@article.count, 'Article') %><span id="right"><%= will_paginate @article %></span</td>
@@ -15,8 +15,8 @@
     <th>Article</th><th>Published on</th><% if signed_in_admin? %><th>Actions</th><% end %>
   </tr>
   <% @article.each do |a| %>
-  <tr>
-  <td><%= link_to a.title, article_path(a.id) %></td><td><%= a.updated_at %></td><% if signed_in_admin? %><td><%= link_to "view", article_path(a.id) %> | <%= link_to "delete", a, :method => :delete, :confirm => "Are you sure?", :title => "Delete Article ##{a.id}" %></td><% end %>
+  <tr class="articles">
+  <td><%= link_to a.title, article_path(a.id) %></td><td><%= a.updated_at.strftime("%b. %d, %Y") %></td><% if signed_in_admin? %><td><%= link_to image_tag('icons/magnifier.png', :alt => 'View Article', :title => 'View Artilce'), article_path(a.id) %> <%= link_to image_tag('icons/pencil.png', :alt => 'Edit Article', :title => 'Edit Artilce'), edit_article_path(a.id) %> <%= link_to image_tag('icons/delete.png', :alt => 'Delete Article', :title => 'Delete Article'), a, :method => :delete, :confirm => "Are you sure?", :title => "Delete Article ##{a.id}" %></td><% end %>
   </tr>
   <% end %>
     <tr>

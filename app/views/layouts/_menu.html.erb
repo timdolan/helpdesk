@@ -1,9 +1,8 @@
 <div id="menu_container">
-<ul class="googleTab">  
+<ul class="googleTab">
   <li><%= link_to_unless_current "Home", root_path do link_to "Home", root_path, :class => "active" end %></li>
   <li><%= link_to_unless_current "Knowledge Base", articles_path do link_to "Knowledge Base", articles_path, :class => "active" end %></li>
   <% if signed_in? %>
-    <li><%= link_to_unless_current "Profile", user_path(current_user) do link_to "Profile", user_path(current_user), :class => "active" end %></li>
     <% if current_user.admin? %>
       <li><%= link_to_unless_current "Bulletins", bulletins_path do link_to "Bulletins", bulletins_path, :class => "active" end %></li>
       <li><%= link_to_unless_current "Locations", locations_path do link_to "Locations", locations_path, :class => "active" end %></li>

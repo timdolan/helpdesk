@@ -1,6 +1,6 @@
 <h1><%= "#{@user.last_name}, #{@user.first_name} #{@user.middle_name}" %></h1>
 
-<table class="profile">
+<table class="user">
   <tr>
     <td>Employee ID</td>
     <td><%= @user.employee_number %></td>
@@ -23,7 +23,7 @@
   </tr>
   <tr>
     <td><%= link_to "Edit Profile", edit_user_path(@user) %></td>
-    <td></td>
+    <td>&nbsp;</td>
   </tr>
 </table>
 <br />

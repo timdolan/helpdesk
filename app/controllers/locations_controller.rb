@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+
+  before_filter :admin_user
+  
   def index
     @location = Location.all
     @title = "Location"
@@ -18,7 +21,7 @@ class LocationsController < ApplicationController
     @location = Location.new(params[:location])
     if @location.save
       flash[:success] = "New location saved!"
-      redirect_to @location
+      redirect_to locations_path
     else
       @title = "Add Location"
       render 'new'
@@ -35,7 +38,7 @@ class LocationsController < ApplicationController
     if @location.update_attributes(params[:location])
       
       flash[:success] = "Location updated"
-      redirect_to @location
+      redirect_to locations_path
     else
       @title = "Edit Location"
       render 'edit'
