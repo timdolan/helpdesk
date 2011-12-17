@@ -50,7 +50,8 @@ end
   
 def correct_user
   @user = User.find(params[:id])
-  redirect_to root_path, :notice => "You can't go to that page." unless current_user?(@user) or current_user.admin?
+  redirect_to root_path, :notice => "Access Denied" unless current_user?(@user) or current_user.admin? if @user.worker?
+  redirect_to root_path, :notice => "Access Denied" unless current_user?(@user) or current_user.worker?
 end
 
 def worker_user

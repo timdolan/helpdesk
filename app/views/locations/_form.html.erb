@@ -1,16 +1,9 @@
+<div class="locations_form">
 <%= form_for @location do |l| %>
   <%= render 'shared/error_messages', :record => @location %>
-  <div class="field">
-    <%= l.label :name %><br /><%= l.text_field :name %><br />
-  </div>
-  <div class="field">
-    <%= l.label :address %><br /><%= l.text_field :address %><br />
-  </div>
-  <div class="field">
-    <%= l.label :user_id %><br /><%= l.collection_select :user_id, User.where("worker = ?", true), :id, :full_name, :include_blank => "assigned field tech" %><br />
-  </div>
-  <div class="actions">
-    <%= l.submit "Add Location" %>
-  </div>
+    <%= l.label :name %><br /><%= l.text_field :name, :size => '50' %><br />
+    <%= l.label :address %><br /><%= l.text_field :address, :size => '50' %><br />
+    <%= l.label "Assigned Field Technician" %><br /><%= l.collection_select :user_id, User.where("worker = ?", true), :id, :full_name_with_emp_id, :include_blank => "assigned field tech" %><br />
+    <%= l.submit "Add Location" %> <%= link_to "Cancel", :back %>
 <% end %>
-<%= link_to "Cancel", locations_path %>
+</div>

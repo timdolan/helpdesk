@@ -1,0 +1,14 @@
+<div id="hide_user_information">
+  <div id="user_information">
+    <ul class="profile">
+      <li>SPPS Helpdesk Profile</li>
+      <li><span id="blue">Name:</span><br /><%= @ticket.user.last_name %>, <%= @ticket.user.first_name %> <%= @ticket.user.middle_name %></li>
+      <li><span id="blue">Employee ID:</span><br /><%= @ticket.user.employee_number %></li>
+      <li><span id="blue">Email:</span><br /><%= @ticket.user.email %></li>
+      <li><span id="blue">Work Phone:</span><br /><%= @ticket.user.work_phone %></li>
+      <li><span id="blue">Cell Phone:</span><br /><%= @ticket.user.cell_phone %></li>
+      <li><span id="blue">Location:</span><br /><%= @ticket.user.location.name %></li>
+      <li><%= link_to "[ Edit Profile ]", edit_user_path(@ticket.user.id) %></li>
+    </ul>
+  </div>
+</div>

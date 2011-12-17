@@ -12,11 +12,11 @@
   <% end %>
   </tr>
   <tr>
-    <th>Article</th><th>Published on</th><% if signed_in_admin? %><th>Actions</th><% end %>
+    <th>Article</th><th>Published on</th><th>Actions</th>
   </tr>
   <% @article.each do |a| %>
   <tr class="articles">
-  <td><%= link_to a.title, article_path(a.id) %></td><td><%= a.updated_at.strftime("%b. %d, %Y") %></td><% if signed_in_admin? %><td><%= link_to image_tag('icons/magnifier.png', :alt => 'View Article', :title => 'View Artilce'), article_path(a.id) %> <%= link_to image_tag('icons/pencil.png', :alt => 'Edit Article', :title => 'Edit Artilce'), edit_article_path(a.id) %> <%= link_to image_tag('icons/delete.png', :alt => 'Delete Article', :title => 'Delete Article'), a, :method => :delete, :confirm => "Are you sure?", :title => "Delete Article ##{a.id}" %></td><% end %>
+    <td><%= link_to a.title, article_path(a.id) %></td><td><%= a.updated_at.strftime("%b. %d, %Y") %></td><td><%= link_to image_tag('icons/magnifier.png', :alt => 'View Article', :title => 'View Artilce'), article_path(a.id) %><% if signed_in_admin? %> <%= link_to image_tag('icons/pencil.png', :alt => 'Edit Article', :title => 'Edit Artilce'), edit_article_path(a.id) %> <%= link_to image_tag('icons/delete.png', :alt => 'Delete Article', :title => 'Delete Article'), a, :method => :delete, :confirm => "Are you sure?", :title => "Delete Article ##{a.id}" %><% end %></td>
   </tr>
   <% end %>
     <tr>

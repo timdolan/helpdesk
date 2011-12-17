@@ -3,7 +3,7 @@
 <table class="show_ticket">
   <tr>
     <td><% if signed_in_worker? %>
-          <%= link_to image_tag('icons/pencil.png')+" Edit ticket", edit_ticket_path(@ticket.id) %>
+          <%= link_to image_tag('icons/pencil.png')+" Edit ticket", edit_ticket_path(@ticket.id) %> | <%= link_to "View Contact Info", "#user_information", :class => "user_information" %>
         <% end %>
     </td>
     <td>&nbsp;</td>
@@ -30,7 +30,13 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td colspan="3"><span class="ticket_heading">Issue:</span><br /><%= @ticket.issue %></td>
+    <td colspan="3">
+      <table>
+        <tr>
+          <td><span class="ticket_heading">Issue:</span></td><td><%= @ticket.issue %></td>
+        </tr>
+      </table>
+    </td>
   </tr>
   <tr>
     <td colspan="3"><%= link_to image_tag('icons/add.png')+" Add comment", ticket_path(@ticket), :remote => true, :id => "showcommentform"  %></td>
@@ -49,7 +55,7 @@
     <% else %>
       <td colspan="3">
         <% @ticket.comments.each do |c| %>
-          <div id="ticketcomment"><h1><%= c.created_at %></h1><p><%= c.body %></p></div>
+        <div id="ticketcomment"><h1><%= "#{c.created_at} | #{c.user.first_name} #{c.user.last_name}" %></h1><p><%= c.body %></p></div>
         <% end %>
       </td>
     <% end %>
@@ -57,8 +63,16 @@
 
   <% if !@ticket.resolution_explanation.nil? %>
   <tr>
-    <td colspan="3"><span class="ticket_heading">Resolution:</span><br /><%= @ticket.resolution_explanation %></td>
+    <td colspan="3">
+      <table>
+        <tr>
+          <td><span class="ticket_heading">Resolution:</span></td><td><%= @ticket.resolution_explanation %></td>
+        </tr>
+      </table>
+    </td>
   </tr>
   <% end %>
 </table>
 </div>
+
+<%= render 'shared/user_information' %>

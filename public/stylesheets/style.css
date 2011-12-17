@@ -184,7 +184,13 @@ table.users tr:nth-child(odd) {
 table.user td {
   padding: 2px 10px;
 }
+div.bulletin_form, div.locations_form {
+  background-color: lightgrey;
+  padding: 20px;
 
+  -moz-border-radius: 0 20px;
+  border-radius: 0 20px;
+}
 table.bulletin {
   clear: both;
   border: 1px solid black;
@@ -330,6 +336,27 @@ div#ticketcomment h1 {
 div#ticketcomment p {
   padding: 2px 0 20px 10px;
 }
+div#user_form {
+  background-color: lightgrey;
+  padding: 10px;
+
+  -moz-border-radius: 0 30px;
+  border-radius: 0 30px;
+}
+div#user_form td {
+  padding: 10px;
+}
+.user_form_heading {
+  font-weight: bold;
+  font-size: small;
+}
+table.knowledgebase a {
+  text-decoration: none;
+  color: black;
+}
+table.knowledgebase a:hover {
+  text-decoration: underline;
+}
 table.knowledgebase tr:nth-child(2) {
   background-color: black;
   color: white;
@@ -349,7 +376,43 @@ tr.articles:nth-child(even) {
   background-color: lightgrey;
 }
 tr.articles td {
-  padding: 2px;
+  padding: 4px 2px;
+}
+table.article {
+  width: 100%;
+  border: 1px solid lightgrey;
+}
+table.article td {
+  padding: 4px;
+}
+table.article td:first-child a {
+  padding: 1px 10px 1px 1px;
+}
+tr#article_title th {
+  text-align: left;
+  background-color: lightgrey;
+  padding: 8px;
+}
+tr#article_dates td {
+  text-align: center;
+  font-size: small;
+}
+tr#article_content td {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px 10px;
+}
+tr#article_creator {
+  text-align: left;
+  font-size: small;
+  padding: 2px 0;
+}
+.pagination {
+  font-size: small;
+  font-weight: bold;
+}
+div#hide_user_information {
+  display: none;
 }
 footer {
   display: relative;
@@ -363,7 +426,7 @@ footer {
   font-size: small;
   font-weight: bold;
   background-color: #bbb;
-  height: 120px;
+  min-height: 120px;
   width: 100%;
 }
 #footer > p {

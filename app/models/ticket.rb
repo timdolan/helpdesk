@@ -31,14 +31,29 @@ class Ticket < ActiveRecord::Base
                                 :inclusion => { :in => STATUS }
   validates :location_id,       :presence => true
   
-
-  def set_default_values
-    ticket_type = "request for service" if ticket_type.nil? or ticket_type == ""
-    priority = "medium" if priority.nil? or priority == ""
-    urgency = "medium" if urgency.nil? or urgency == ""
-    impact = "medium" if impact.nil? or impact == ""
-    status = "open" if status.nil? or status == ""
-    assigned_to = "1" if assigned_to.nil? or assigned_to == ""
+  before_validation :set_default_values_if_necessary
+  before_save :location_check
+  
+  
+  def location_check
+    if self.location_id_changed? && !self.new_record? 
+      update_assigned_to
+    end
+  end
+  
+  def update_assigned_to
+    self.assigned_to = self.location.user_id
+  end
+  
+  def set_default_values_if_necessary
+    if self.new_record?
+      self.ticket_type = "request for service" if self.ticket_type.nil? or self.ticket_type == ""
+      self.priority = "medium" if self.priority.nil? or self.priority == ""
+      self.urgency = "medium" if self.urgency.nil? or self.urgency == ""
+      self.impact = "medium" if self.impact.nil? or self.impact == ""
+      self.status = "open" if self.status.nil? or self.status == ""
+      self.assigned_to = self.location.user_id
+    end
   end
 
 end

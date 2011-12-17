@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :bulletins
   has_many :articles
   has_many :tickets
+  has_many :ticket_comments
 
   validates :last_name,             :presence => true
   validates :first_name,            :presence => true
@@ -43,8 +44,8 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
   
-  def full_name
-    "#{first_name} #{last_name}"
+  def full_name_with_emp_id
+    "#{first_name} #{last_name} (#{employee_number})"
   end
 
   private

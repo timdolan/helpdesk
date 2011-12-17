@@ -1,14 +1,7 @@
 <table class="article">
-<% if signed_in_worker? %>
-  <thead>
-    <tr><th>Created on: <%= @article.created_at %></th></tr>
-    <tr><th>Updated on: <%= @article.updated_at %></th></tr>
-    <tr><th>Submitted by: <%= @article.user.first_name %> <%= @article.user.last_name %></th></tr>
-    <tr><td><%= link_to "edit", edit_article_path(@article) %></td></tr>
-  </thead>
-<% end %>
-  <tbody>
-    <tr><th><%= @article.title %></th></tr>
-    <tr><td><%= @article.article.html_safe %></td></tr>
-  </tbody>
+<tr><td colspan="2"><% if signed_in_worker? %><%= link_to image_tag('icons/add.png', :title => 'Edit article'), edit_article_path(@article) %><% end %> <%= link_to image_tag('icons/arrow_undo.png', :title => 'Back to articles'), :back %></td></tr>
+    <tr id="article_title"><th colspan="2"><%= @article.title %></th></tr>
+    <tr id="article_dates"><td>Created on: <%= @article.created_at %></td><td>Updated on: <%= @article.updated_at %></td></tr>
+    <tr id="article_content"><td colspan="2"><%= @article.article.html_safe %></td></tr>
+    <tr id="article_creator"><td colspan="2">Submitted by: <%= @article.user.first_name %> <%= @article.user.last_name %></td></tr>
 </table>

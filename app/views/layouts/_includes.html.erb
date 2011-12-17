@@ -1,9 +1,43 @@
 <%= stylesheet_link_tag :all %>
 <%= javascript_include_tag :defaults %>
 <%= javascript_include_tag "jquery.min.js" %>
+<%= javascript_include_tag "jquery.colorbox-min.js"%>
 <%= include_tiny_mce_if_needed %>
 <%= csrf_meta_tag %>
 <script type="text/javascript">
+$(window).bind("load", function() { 
+
+       var footerHeight = 0,
+           footerTop = 0,
+           $footer = $("#footer");
+
+       positionFooter();
+
+       function positionFooter() {
+
+                footerHeight = $footer.height();
+                footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+
+               if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+                   $footer.css({
+                        position: "absolute"
+                   }).animate({
+                        top: footerTop
+                   })
+               } else {
+                   $footer.css({
+                        position: "static"
+                   })
+               }
+
+       }
+
+       $(window)
+               .scroll(positionFooter)
+               .resize(positionFooter)
+
+});
+
 
 $(document).ready(function () {
     $("#showcommentform").click(function() {
@@ -23,6 +57,11 @@ $(document).ready(function () {
         $('#ticketcomments').hide();
         positionFooter();
     });
+    $(".user_information").colorbox({
+          inline:true, 
+          width:"360px",
+          returnFocus: true
+      });
 });
 
 </script>

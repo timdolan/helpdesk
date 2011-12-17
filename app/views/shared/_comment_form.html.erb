@@ -2,9 +2,11 @@
   <div class="field">
     <%= t.text_area :body, :cols => "80", :rows => "10" %>
   </div>
+  <% if current_user.worker? %>
   <div class="field">
     <%= t.label :status %> <%= t.select :status, options_for_select(Ticket::STATUS, @ticket.status) %><br />
   </div>
+  <% end %>
   <div class="actions">
     <%= t.submit %>
   </div>

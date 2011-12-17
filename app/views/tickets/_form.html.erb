@@ -6,7 +6,7 @@
     <td colspan="3"><%= t.label :title %> <%= t.text_field :title, :size => "100" %></td>
   </tr>
   <tr>
-    <td><%= t.label :location_id %> <%= t.collection_select :location_id, Location.all, :id, :name, {:selected => current_user.location_id, :include_blank => "location"} %></td>
+    <td><%= t.label :location_id %> <%= t.collection_select :location_id, Location.all, :id, :name, {:include_blank => "location"} %></td>
     <td><% if current_user.worker? %>
         <%= t.label :assigned_to %> <%= t.collection_select :assigned_to, User.where("worker = ?", true), :id, :full_name, { :selected => @ticket.assigned_to, :include_blank => "assigned to" } %>
         <% else %>
@@ -41,7 +41,7 @@
   </tr>
   <% end %>
   <tr>
-    <td><%= t.submit submit_text %></td><td><%= link_to "Cancel", root_path %></td><td>&nbsp;</td>
+    <td><%= t.submit submit_text %></td><td><%= link_to "Cancel", :back %></td><td>&nbsp;</td>
   </tr>
 </table>
 </div>

@@ -1,16 +1,30 @@
 <%= form_for @user do |u| %>
   <%= render 'shared/error_messages', :record => @user %>
-  
-    <%= u.label :first_name %><br /><%= u.text_field :first_name %><br />
-    <%= u.label :middle_name %><br /><%= u.text_field :middle_name %><br />
-    <%= u.label :last_name %><br /><%= u.text_field :last_name %><br />
-    <%= u.label :employee_number %><br /><%= u.text_field :employee_number %><br />
-    <%= u.label :email %><br /><%= u.text_field :email %><br />
-    <%= u.label :work_phone %><br /><%= u.text_field :work_phone %><br />
-    <%= u.label :cell_phone %><br /><%= u.text_field :cell_phone %><br />
-    <%= u.label :location %><br /><%= u.collection_select :location_id, Location.all, :id, :name, :include_blank => "main location" %><br />
-    <%= u.label :password %><br /><%= u.password_field :password %><br />
-    <%= u.label :password_confirmation %><br /><%= u.password_field :password_confirmation %><br />
-    <%= u.submit submit_text %>
-    <%= link_to "Cancel", users_path %>
+  <div id="user_form">
+  <table>
+    <tr>
+      <td><span class="user_form_heading"><%= u.label :first_name %></span><br /><%= u.text_field :first_name %></td>
+      <td><span class="user_form_heading"><%= u.label :middle_name %></span><br /><%= u.text_field :middle_name %></td>
+      <td><span class="user_form_heading"><%= u.label :last_name %></span><br /><%= u.text_field :last_name %></td>
+    </tr>
+    <tr>
+      <td><span class="user_form_heading"><%= u.label :employee_number %></span><br /><%= u.text_field :employee_number %></td>
+      <td><span class="user_form_heading"><%= u.label :email %></span><br /><%= u.text_field :email %></td>
+      <td><span class="user_form_heading"><%= u.label :location %></span><br /><%= u.collection_select :location_id, Location.all, :id, :name, :include_blank => "main location" %></td>
+    </tr>
+    <tr>
+      <td><span class="user_form_heading"><%= u.label "Work Phone (xxx-xxx-xxxx)" %></span><br /><%= u.text_field :work_phone %></td>
+      <td><span class="user_form_heading"><%= u.label "Cell Phone (xxx-xxx-xxxx)" %></span><br /><%= u.text_field :cell_phone %></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><span class="user_form_heading"><%= u.label :password %></span><br /><%= u.password_field :password %></td>
+      <td><span class="user_form_heading"><%= u.label :password_confirmation %></span><br /><%= u.password_field :password_confirmation %></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3"><%= u.submit submit_text %> <%= link_to "Cancel", :back %></td>
+    </tr>
+  </table>
+  </div>
 <% end %>
