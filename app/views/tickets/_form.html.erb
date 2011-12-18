@@ -8,7 +8,7 @@
   <tr>
     <td><%= t.label :location_id %> <%= t.collection_select :location_id, Location.all, :id, :name, {:include_blank => "location"} %></td>
     <td><% if current_user.worker? %>
-        <%= t.label :assigned_to %> <%= t.collection_select :assigned_to, User.where("worker = ?", true), :id, :full_name, { :selected => @ticket.assigned_to, :include_blank => "assigned to" } %>
+        <%= t.label :assigned_to %> <%= t.collection_select :assigned_to, User.where("worker = ?", true), :id, :full_name_with_emp_id, { :selected => @ticket.assigned_to, :include_blank => "assigned to" } %>
         <% else %>
             &nbsp;
         <% end %>
