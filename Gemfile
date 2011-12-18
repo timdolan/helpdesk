@@ -37,6 +37,7 @@ group :development do
 end
 group :production do
   gem 'pg'
+  gem 'thin'
 end
 group :development, :test do
   gem 'sqlite3'
