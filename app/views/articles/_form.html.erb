@@ -1,6 +1,7 @@
 <%= form_for @article do |a| %>
-  <%= a.label :title %><br /><%= a.text_field :title %><br />
+  <%= a.label :title %><br /><%= a.text_field :title, :size => "120" %><br />
   <%= a.label :article %><br /><%= a.text_area :article, :class => "mceEditor", :rows => "12", :cols => "100" %><br />
+  <%= a.label :keyword %><br /><%= a.text_field :keyword, :size => "120" %><br />
   <%= a.label :current %>: <%= a.check_box :current %><br />
   <%= a.label :public %>: <%= a.check_box :public %><br />
   <%= a.submit submit_text %> <%= link_to "Cancel", :back %>
