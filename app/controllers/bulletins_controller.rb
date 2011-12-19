@@ -1,4 +1,7 @@
 class BulletinsController < ApplicationController
+
+  before_filter :admin_user, :except => [:index, :show]
+
   def index
     @bulletin = Bulletin.all
     @title = "Bulletins"
