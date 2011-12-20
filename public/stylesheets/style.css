@@ -307,6 +307,9 @@ table.show_ticket, table.edit_ticket {
 table.show_ticket td, table.edit_ticket td {
   padding: 6px;
 }
+table.edit_ticket select {
+  width: 200px;
+}
 .ticket_heading {
   font-weight: bold;
   color: blue;
