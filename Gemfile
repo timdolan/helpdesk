@@ -17,7 +17,7 @@ group :test do
 end
 group :production do
   gem 'pg'
-#  gem 'thin'
+  gem 'thin'
 end
 
 # Bundle edge Rails instead:
