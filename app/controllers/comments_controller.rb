@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   before_filter :authenticate, :only => [:show, :new, :create]
   before_filter :admin_user, :only => [:edit, :update, :destroy]
 
+  def index
+    @comment = Comment.where("ticket_id = ? and created_at > ?", params[:ticket_id], Time.at(params[:after].to_i + 1))
+  end
+
   def show
     @comment = Comment.find(params[:id])
     @ticket = Ticket.find(params[:ticket_id])

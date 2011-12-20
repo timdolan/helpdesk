@@ -2,16 +2,26 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
 gem 'jquery-rails'
 
 gem 'tiny_mce'
 
 gem 'will_paginate'
 
+group :development do
+  gem 'faker'
+  gem 'sqlite3'
+end
+group :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+#  gem 'thin'
+end
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,13 +42,3 @@ gem 'will_paginate'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-group :development do
-  gem 'faker'
-end
-group :production do
-  gem 'pg'
-  gem 'thin'
-end
-group :development, :test do
-  gem 'sqlite3'
-end

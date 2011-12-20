@@ -184,7 +184,7 @@ table.users tr:nth-child(odd) {
 table.user td {
   padding: 2px 10px;
 }
-div.bulletin_form, div.locations_form {
+div.bulletin_form, div.locations_form, div.articles_form {
   background-color: lightgrey;
   padding: 20px;
 
@@ -325,7 +325,19 @@ div#ticketcomment {
   display: block;
   padding: 10px;
   margin: 0;
-  border-bottom: 4px solid grey;
+  border-radius: 10px;
+  background-color: white;
+  width: 80%;
+}
+div#ticketcomment table {
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 6px;
+}
+div#ticketcomment table:last-child {
+  width: 100%;
+  border-bottom: 0;
+  margin-bottom: 0;
 }
 div#ticketcomment h1 {
   font-size: small;

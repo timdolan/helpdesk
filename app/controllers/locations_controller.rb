@@ -50,4 +50,5 @@ class LocationsController < ApplicationController
     flash[:success] = "Location deleted."
     redirect_to locations_path 
   end
+  
 end
