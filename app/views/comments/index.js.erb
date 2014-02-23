@@ -1,1 +1,1 @@
-alert("getting to the index javascript file in the comments view.");
+$("#ticket_comment").before("<%= raw escape_javascript(render(@comments)) %>")

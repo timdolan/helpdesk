@@ -1,5 +1,5 @@
 <br />
-<div id="ticket_table_bg">
+<div id="ticket_table_bg" data-id="<%= @ticket.id %>">
 <table class="show_ticket">
   <tr>
     <td><% if signed_in_worker? %>
@@ -54,9 +54,7 @@
     <td colspan="3"><p>There are currently no tickets to view.</p></td>
   <% else %>
   <td colspan="3">
-    <div id="ticketcomment">
-      <%= render @ticket.comments %>
-    </div>
+    <%= render @ticket.comments %>
   </td>
   <% end %>
   </tr>

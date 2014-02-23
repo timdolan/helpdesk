@@ -1,4 +1,4 @@
-<%= form_for([@ticket, @comment]) do |t| %>
+<%= form_for([@ticket, @comment], :remote => true) do |t| %>
   <div class="field">
     <%= t.text_area :body, :cols => "80", :rows => "10" %>
   </div>
@@ -8,6 +8,6 @@
   </div>
   <% end %>
   <div class="actions">
-    <%= t.submit %>
+  <%= t.submit "Submit Comment", :class => "submit_comment" %>
   </div>
 <% end %>

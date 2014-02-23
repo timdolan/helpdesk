@@ -1,9 +1,9 @@
 class TicketsController < ApplicationController
 
   before_filter :authenticate, :only => [:show, :new, :create]
-  before_filter :worker_user, :only => [:edit, :update]
+  before_filter :worker_user, :only => [:index, :edit, :update]
   before_filter :admin_user, :only => :destroy
-
+  
   def index
     @ticket = Ticket.all
     @title = "Tickets"

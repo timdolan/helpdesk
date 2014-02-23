@@ -3,6 +3,7 @@ Helpdesk::Application.routes.draw do
   get "ticket_comments/index"
 
   resources :users, :locations, :bulletins
+  resources :comments
   resources :tickets do
     resources :comments
   end
