@@ -1,8 +1,9 @@
-<div id="menu_container">
-<ul class="googleTab">
-  <li><%= link_to_unless_current "Home", root_path do link_to "Home", root_path, :class => "active" end %></li>
-  <li><%= link_to_unless_current "Knowledge Base", articles_path do link_to "Knowledge Base", articles_path, :class => "active" end %></li>
-  <% if signed_in? %>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+  <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to_unless_current "Home", root_path do link_to "Home", root_path, :class => "active" end %></li>
+    <li><%= link_to_unless_current "Knowledge Base", articles_path do link_to "Knowledge Base", articles_path, :class => "active" end %></li>
+    <% if signed_in? %>
     <% if current_user.admin? %>
       <li><%= link_to_unless_current "Bulletins", bulletins_path do link_to "Bulletins", bulletins_path, :class => "active" end %></li>
       <li><%= link_to_unless_current "Locations", locations_path do link_to "Locations", locations_path, :class => "active" end %></li>
@@ -11,8 +12,9 @@
       <li><%= link_to_unless_current "Users", users_path do link_to "Users", users_path, :class => "active" end %></li>
     <% end %>
     <li><%= link_to_unless_current "Sign out", signout_path do link_to "Sign out", signout_path, :class => "active" end %></li>
-  <% else %>
+    <% else %>
     <li><%=link_to_unless_current "Sign in", signin_path do link_to "Sign in", signin_path, :class => "active" end %></li>
-  <% end %>
-</ul>
-</div>
+    <% end %>
+  </ul>
+  <div>
+</nav>

@@ -8,15 +8,15 @@
   <menu>
     <%= render 'layouts/menu' %>
   </menu>
-  <div id="container">
+  <div class="container">
     <header>
       <%= render 'layouts/header' %>
     </header>
-    <content>
+    <div class="content">
       <%= yield %>
-    </content>
+    </div>
   </div>
-  <footer id="footer">
+  <footer id="footer" class="container">
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
   </footer>

@@ -1,13 +1,2 @@
-<table id="header">
-  <tr>
-    <td><%= image_tag("sppslogo.gif") %></td>
-    <td><%= image_tag("helpdesk_logo_medium.png") %></td>
-  </tr>
-  <tr>
-    <td>
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %></td>
-      <td>&nbsp;</td>
-  </tr>
-</table>
+<div class="col-md-4"><%= image_tag("sppslogo.gif") %></div>
+<div class="col-md-8"><%= image_tag("helpdesk_logo_medium.png") %></div>
